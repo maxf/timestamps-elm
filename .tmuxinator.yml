@@ -1,6 +1,8 @@
 name: timestamps-elm
 root: ~/dev/timestamps-elm
 
+pre_window: export PUBLIC_URL=.
+
 windows:
   - main:
       layout: main-vertical
