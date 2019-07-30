@@ -1,11 +1,11 @@
 {
-  "main.css": "/static/css/main.1d2162ec.chunk.css",
-  "main.js": "/static/js/main.d276fd86.chunk.js",
-  "main.css.map": "/static/css/main.1d2162ec.chunk.css.map",
-  "main.js.map": "/static/js/main.d276fd86.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.cca692ed.js",
-  "runtime~main.js.map": "/static/js/runtime~main.cca692ed.js.map",
-  "vendors~main.js": "/static/js/vendors~main.3ca81432.chunk.js",
-  "vendors~main.js.map": "/static/js/vendors~main.3ca81432.chunk.js.map",
-  "index.html": "/index.html"
+  "main.css": "./static/css/main.1d2162ec.chunk.css",
+  "main.js": "./static/js/main.f2c15ae1.chunk.js",
+  "main.css.map": "./static/css/main.1d2162ec.chunk.css.map",
+  "main.js.map": "./static/js/main.f2c15ae1.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.84d12349.js",
+  "runtime~main.js.map": "./static/js/runtime~main.84d12349.js.map",
+  "vendors~main.js": "./static/js/vendors~main.3ca81432.chunk.js",
+  "vendors~main.js.map": "./static/js/vendors~main.3ca81432.chunk.js.map",
+  "index.html": "./index.html"
 }
