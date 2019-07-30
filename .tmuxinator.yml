@@ -1,0 +1,10 @@
+name: timestamps-elm
+root: ~/dev/timestamps-elm
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - emacs -nw .
+        - elm-app start
+        -
