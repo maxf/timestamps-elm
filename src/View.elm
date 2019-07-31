@@ -1,7 +1,8 @@
 module View exposing (view)
 
-import Html exposing (Html, div, h1, h2, img, li, text, ul)
+import Html exposing (..)
 import Html.Attributes exposing (src)
+import Html.Events exposing (onClick)
 import Time
 import Types exposing (Model, Msg(..), TimestampManager)
 
@@ -32,12 +33,18 @@ viewName maybeName =
             h2 [] [ text name ]
 
 
+viewAddButton : TimestampManager -> Html Msg
+viewAddButton tsm =
+    button [ onClick (UserClickedAddTs tsm) ] [ text "New" ]
+
+
 viewMgr : TimestampManager -> Html Msg
-viewMgr ts =
+viewMgr tsm =
     li
         []
-        [ viewName ts.name
-        , viewTimestamps ts.timestamps
+        [ viewName tsm.name
+        , viewTimestamps tsm.timestamps
+        , viewAddButton tsm
         ]
 
 

@@ -3,6 +3,10 @@ module Types exposing (Model, Msg(..), TimestampManager, initialModel, newTsMgr)
 import Time
 
 
+type alias Timestamp =
+    Time.Posix
+
+
 type alias Model =
     { tsManagers : List TimestampManager }
 
@@ -10,28 +14,31 @@ type alias Model =
 initialModel : Model
 initialModel =
     { tsManagers =
-        [ newTsMgr "u" (Just "UR")
-        , newTsMgr "h" Nothing
+        [ newTsMgr (Just "UR")
+        , newTsMgr Nothing
         ]
     }
 
 
 type alias TimestampManager =
-    { id : String
-    , timestamps : List Time.Posix
-    , newTimestamp : Maybe Time.Posix
+    { timestamps : List Timestamp
+    , newTimestamp : Maybe Timestamp
     , name : Maybe String
     }
 
 
-newTsMgr : String -> Maybe String -> TimestampManager
-newTsMgr id name =
+newTsMgr : Maybe String -> TimestampManager
+newTsMgr name =
     { timestamps = []
     , newTimestamp = Nothing
     , name = name
-    , id = id
     }
 
 
+type alias TsMgrId =
+    String
+
+
 type Msg
-    = TimestampManagerAdd TimestampManager
+    = UserClickedAddTs TimestampManager
+    | RetrievedTimeForNewTs TimestampManager Time.Posix
