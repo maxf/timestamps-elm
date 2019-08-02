@@ -1,44 +1,35 @@
-module Types exposing (Model, Msg(..), TimestampManager, initialModel, newTsMgr)
+module Types exposing (..)
 
-import Time
-
-
-type alias Timestamp =
-    Time.Posix
-
+import Array exposing (Array)
+import TimestampManager exposing (TimestampManager, new, activate, deactivate)
+import Timestamp exposing (Timestamp)
 
 type alias Model =
-    { tsManagers : List TimestampManager }
+    { tsManagers : Array TimestampManager }
 
 
 initialModel : Model
 initialModel =
     { tsManagers =
-        [ newTsMgr (Just "UR")
-        , newTsMgr Nothing
-        ]
+        Array.fromList
+            [ new (Just "UR")
+            , new Nothing
+            ]
     }
 
 
-type alias TimestampManager =
-    { timestamps : List Timestamp
-    , newTimestamp : Maybe Timestamp
-    , name : Maybe String
-    }
+
+activateTsMgr : Timestamp -> Int -> Model -> Model
+activateTsMgr time index model =
+    { model | tsManagers = activate time index model.tsManagers }
 
 
-newTsMgr : Maybe String -> TimestampManager
-newTsMgr name =
-    { timestamps = []
-    , newTimestamp = Nothing
-    , name = name
-    }
-
-
-type alias TsMgrId =
-    String
+deactivateTsMgr : Int -> Model -> Model
+deactivateTsMgr index model =
+    { model | tsManagers = deactivate index model.tsManagers }
 
 
 type Msg
-    = UserClickedAddTs TimestampManager
-    | RetrievedTimeForNewTs TimestampManager Time.Posix
+    = UserClickedAddTs Int
+    | RetrievedTimeForNewTs Int Timestamp
+    | UserClickedCancel Int

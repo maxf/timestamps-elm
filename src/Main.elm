@@ -17,13 +17,16 @@ init =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        UserClickedAddTs tsMgrId ->
+        UserClickedAddTs index ->
             ( model
-            , Task.perform (RetrievedTimeForNewTs tsMgrId) Time.now
+            , Task.perform (RetrievedTimeForNewTs index) Time.now
             )
 
-        RetrievedTimeForNewTs tsMgrId newTime ->
-            ( model, Cmd.none )
+        RetrievedTimeForNewTs index newTime ->
+            ( activateTsMgr newTime index model, Cmd.none )
+
+        UserClickedCancel index ->
+            ( deactivateTsMgr index model, Cmd.none )
 
 
 main : Program () Model Msg
